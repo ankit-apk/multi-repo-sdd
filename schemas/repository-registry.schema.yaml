@@ -1,0 +1,22 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: RepositoryRegistry
+type: object
+required: [workspace, repositories]
+properties:
+  workspace:
+    type: string
+  repositories:
+    type: array
+    items:
+      type: object
+      required: [name, path, registered_at]
+      properties:
+        name: { type: string }
+        path: { type: string }
+        language: { type: [string, "null"] }
+        last_discovered_sha: { type: [string, "null"] }
+        last_discovered_at: { type: [string, "null"] }
+        registered_at: { type: string }
+        tags:
+          type: array
+          items: { type: string }

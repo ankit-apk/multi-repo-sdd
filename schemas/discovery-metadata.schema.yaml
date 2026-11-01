@@ -1,0 +1,20 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: DiscoveryMetadata
+type: object
+required: [repository, path, discovered_at, mode, read_only]
+properties:
+  repository: { type: string }
+  path: { type: string }
+  commit_sha: { type: [string, "null"] }
+  discovered_at: { type: string }
+  mode:
+    type: string
+    enum: [initial, incremental, targeted]
+  language: { type: [string, "null"] }
+  frameworks:
+    type: array
+    items: { type: string }
+  files_scanned: { type: integer }
+  confidence_policy: { type: string }
+  read_only: { const: true }
+  untrusted_data: { type: boolean }

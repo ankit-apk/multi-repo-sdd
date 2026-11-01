@@ -1,0 +1,15 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Evidence
+type: object
+required: [description, repository, timestamp, confidence, evidence_type]
+properties:
+  description: { type: string }
+  repository: { type: string }
+  file: { type: [string, "null"] }
+  symbol: { type: [string, "null"] }
+  commit_sha: { type: [string, "null"] }
+  timestamp: { type: string }
+  confidence:
+    type: string
+    enum: [verified, inferred, unknown]
+  evidence_type: { type: string }

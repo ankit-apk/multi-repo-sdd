@@ -1,0 +1,40 @@
+workspace:
+  name: enterprise-platform
+  repositories_root: ../examples
+  knowledge_root: ../sdd-workspace
+
+discovery:
+  default_mode: incremental
+  read_only: true
+  evidence_required: true
+
+agents:
+  guardian:
+    enabled: true
+  repository_discovery:
+    enabled: true
+    execution_mode: parallel
+  provider: cursor
+  implementation_provider: local-packet
+  implementation_command: []
+  implementation_timeout_seconds: 3600
+
+sdd:
+  primary_framework: spec-kit
+  framework_version: "1.2.5"
+  specify_command: specify
+  integration: copilot
+  require_spec_approval: true
+  require_design_approval: true
+  auto_init_speckit_in_app_repos: false
+
+governance:
+  require_human_approval: true
+  require_regression_tests: true
+  require_convergence: true
+  authorize_repository_writes: false
+
+knowledge:
+  format: markdown-yaml
+  track_commit_sha: true
+  track_confidence: true

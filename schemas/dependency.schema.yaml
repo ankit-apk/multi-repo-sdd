@@ -1,0 +1,33 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: DependencyMap
+type: object
+properties:
+  dependencies:
+    type: array
+    items:
+      type: object
+      required: [source, target, type, confidence]
+      properties:
+        source: { type: string }
+        target: { type: string }
+        type:
+          type: string
+          enum:
+            - synchronous-api
+            - asynchronous-event
+            - shared-database
+            - shared-library
+            - message-queue
+            - file-integration
+            - external-service
+            - unknown
+        interface: { type: [string, "null"] }
+        confidence:
+          type: string
+          enum: [verified, inferred, unknown]
+        last_verified_commit: { type: [string, "null"] }
+        evidence:
+          type: array
+          items:
+            type: object
+            required: [description, repository, timestamp, confidence]
